@@ -411,7 +411,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to') || 'Bapak/Ibu/Saudara/i yang terkasih';
-            document.getElementById('guestGreeting').textContent = `Kepada ${guestName}`;
+            document.getElementById('guestGreeting').textContent = `Kepada Bapak/Ibu/Saudara/i ${guestName}`;
 
             // Open invitation button
             document.getElementById('openInvitationBtn').addEventListener('click', function () {
