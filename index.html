@@ -1,457 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Lucia & Yonatan</title>
+    <title>Lucia & Yonatan Wedding</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
-        
         body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fafafa;
+            color: #333;
         }
-        
+
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-image: linear-gradient(to top, rgba(228, 219, 234, 0.85), rgba(147, 51, 234, 0.65)), url('assets/img/main.jpg');
             background-size: cover;
-            height: 100vh;
+            background-position: center;
             position: relative;
         }
-        
-        .serif {
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.2);
+            /* Bisa diubah kalau mau lebih soft lagi */
+        }
+
+        .serif-font {
             font-family: 'Playfair Display', serif;
         }
-        
-        .verse-decoration {
+
+        .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
+            padding-left: 28px;
+            margin-bottom: 40px;
         }
-        
-        .verse-decoration::before, .verse-decoration::after {
+
+        .timeline-item:before {
             content: "";
             position: absolute;
-            width: 60px;
-            height: 1px;
-            background-color: #D4AF37;
-            top: 50%;
-        }
-        
-        .verse-decoration::before {
-            left: -70px;
-        }
-        
-        .verse-decoration::after {
-            right: -70px;
-        }
-        
-        .profile-card {
-            transition: transform 0.3s ease;
-        }
-        
-        .profile-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .gallery-container {
-            column-count: 3;
-            column-gap: 1rem;
-        }
-        
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 1rem;
-        }
-        
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            left: -7.5px;
-            top: 5px;
-            background-color: #5B45B0;
+            left: 0;
+            top: 4px;
+            background: #b48a5a;
         }
-        
-        @media (max-width: 768px) {
-            .gallery-container {
-                column-count: 1;
+
+        .timeline-connector {
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            bottom: -20px;
+            width: 2px;
+            background: #b48a5a;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
             }
-            
-            .verse-decoration::before, .verse-decoration::after {
-                width: 30px;
+
+            50% {
+                transform: translateY(-10px);
             }
-            
-            .verse-decoration::before {
-                left: -40px;
+
+            100% {
+                transform: translateY(0px);
             }
-            
-            .verse-decoration::after {
-                right: -40px;
-            }
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-700">
+
+<body class="overflow-x-hidden">
     <!-- Hero Section -->
-    <section class="hero flex items-center justify-center text-center text-white">
-        <div class="container px-4">
-            <h2 class="text-xl uppercase tracking-widest mb-4">THE WEDDING OF</h2>
-            <h1 class="serif text-5xl md:text-7xl font-bold mb-8">Lucia & Yonatan</h1>
-            <p class="text-xl mb-10">Kpd Bpk/Ibu/Saudara/i <span id="guestName" class="font-semibold">[Nama Tamu]</span></p>
-            <button onclick="openInvitation()" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-purple-900 transition duration-300 text-lg flex items-center mx-auto">
+    <section
+        class="hero min-h-screen w-full flex items-center justify-center relative overflow-hidden px-4 md:px-8 py-12 md:py-20">
+        <div class="hero-overlay absolute inset-0 z-10"></div>
+        <div class="absolute inset-0 backdrop-blur-sm z-0"></div>
+
+        <div class="text-center relative z-20 w-full max-w-4xl space-y-6">
+            <p class="text-white text-lg md:text-xl tracking-widest">THE WEDDING OF</p>
+
+            <h1 class="serif-font text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+                <span class="inline-block animate-float">Lucia</span>
+                <span class="mx-2 md:mx-4 text-gold-500">&</span>
+                <span class="inline-block animate-float" style="animation-delay: 0.5s">Yonatan</span>
+            </h1>
+
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 max-w-md mx-auto">
+                <p id="guestGreeting" class="text-white italic"></p>
+            </div>
+
+            <button id="openInvitationBtn"
+                class="bg-gold-500 hover:bg-gold-600 text-white font-medium py-3 px-8 rounded-full text-lg shadow-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-opacity-50">
                 <i class="fas fa-envelope mr-2"></i> Buka Undangan
             </button>
         </div>
-        <div class="absolute bottom-10 left-0 right-0 text-center animate-bounce">
-            <i class="fas fa-chevron-down text-2xl"></i>
+
+        <div class="absolute bottom-6 left-0 right-0 text-center px-4">
+            <p class="text-white text-sm md:text-base">
+                “Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak
+                boleh diceraikan manusia.” (Matius 19:6)
+            </p>
         </div>
     </section>
-    
-    <div class="bg-white py-12 px-4 text-center shadow-sm" id="mainContent" style="display: none;">
-        <!-- Bible Verse -->
-        <section class="container mx-auto max-w-4xl py-12">
-            <p class="verse-serif text-2xl serif mb-6 verse-decoration">"Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia."</p>
-            <p class="text-gray-600">Matius 19:6</p>
-        </section>
-        
-        <!-- Greetings -->
-        <section class="container mx-auto max-w-4xl py-12">
-            <div class="mb-8">
-                <h3 class="text-2xl font-light mb-4">Salam Sejahtera dalam Kasih Tuhan</h3>
-                <p class="text-gray-700 mb-6 leading-relaxed">"Tuhan membuat segala sesuatu indah pada waktu-Nya."</p>
-                <p class="text-gray-600 leading-relaxed">Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami</p>
+
+
+    <!-- Main Content (initially hidden) -->
+    <div id="mainContent" class="hidden">
+        <!-- Greeting Section -->
+        <section class="py-16 px-4 md:px-8 max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="serif-font text-3xl md:text-4xl font-bold text-gray-800 mb-4">Salam Sejahtera dalam Kasih
+                    Tuhan</h2>
+                <p class="text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    “Tuhan membuat segala sesuatu indah pada waktu-Nya.”
+                </p>
+                <p class="text-gray-700 max-w-2xl mx-auto">
+                    Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara
+                    pernikahan kami
+                </p>
             </div>
-        </section>
-        
-        <!-- Couple Profile -->
-        <section class="bg-purple-50 py-16 px-4">
-            <div class="container mx-auto">
-                <h2 class="serif text-3xl text-center mb-16 text-purple-900">Kami Yang Berbahagia</h2>
-                
-                <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-                    <!-- Bride -->
-                    <div class="profile-card text-center bg-white p-8 rounded-lg shadow-lg w-full md:w-96">
-                        <div class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-100">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Bride" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="serif text-2xl text-purple-900 mb-2">Lucia Christianty</h3>
-                        <p class="text-gray-600 mb-4">Putri dari Bpk. Tati & Ibu Supiatin</p>
-                        <p class="text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i> Jepara, Jawa Tengah</p>
+
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-12"></div>
+
+            <!-- Couple Profiles -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-16">
+                <!-- Bride -->
+                <div class="text-center max-w-xs">
+                    <div
+                        class="rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 mx-auto w-48 h-48 md:w-56 md:h-56">
+                        <img src="assets/img/mempelaiperempuan.jpg" alt="Lucia" class="w-full h-full object-cover">
                     </div>
-                    
-                    <div class="text-purple-900 text-5xl my-8 md:my-0 serif">&</div>
-                    
-                    <!-- Groom -->
-                    <div class="profile-card text-center bg-white p-8 rounded-lg shadow-lg w-full md:w-96">
-                        <div class="w-48 h-48 rounded-full overflow-hidden mx-auto mb-6 border-4 border-purple-100">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Groom" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="serif text-2xl text-purple-900 mb-2">Yonatan Setyo Abdi</h3>
-                        <p class="text-gray-600 mb-4">Putra dari Bpk. Surya & Ibu Ratna</p>
-                        <p class="text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i> Semarang, Jawa Tengah</p>
+                    <h3 class="serif-font text-2xl font-bold text-gray-800">Lucia Christianty</h3>
+                    <p class="text-gray-600 mb-2">Putri dari Bapak Karnoto & Ibu Nuryati</p>
+                    <p class="text-gray-500 text-sm">Kembang, Jepara</p>
+                </div>
+
+                <div class="hidden md:block serif-font text-4xl text-gold-600 px-4">&</div>
+
+                <!-- Groom -->
+                <div class="text-center max-w-xs mt-8 md:mt-0">
+                    <div
+                        class="rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 mx-auto w-48 h-48 md:w-56 md:h-56">
+                        <img src="assets/img/mempelaipria.jpg" alt="Yonatan" class="w-full h-full object-cover">
                     </div>
+                    <h3 class="serif-font text-2xl font-bold text-gray-800">Yonatan Setyo Abdi</h3>
+                    <p class="text-gray-600 mb-2">Putra dari Bapak Triyoso & Ibu Supiatin</p>
+                    <p class="text-gray-500 text-sm">Bangsri, Jepara</p>
                 </div>
             </div>
+
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-12"></div>
         </section>
-        
+
         <!-- Save the Date -->
-        <section class="container mx-auto max-w-4xl py-20 px-4">
-            <h2 class="serif text-3xl text-center mb-16 text-purple-900">Save The Date</h2>
-            
-            <div class="grid md:grid-cols-2 gap-10 mb-16">
-                <!-- Wedding Ceremony -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-purple-800">
-                    <h3 class="serif text-2xl text-center mb-6 text-purple-900">Pemberkatan Nikah</h3>
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="text-purple-800 mr-4 text-4xl">
-                            <i class="fas fa-church"></i>
+        <section class="py-16 bg-purple-50">
+            <div class="max-w-4xl mx-auto px-4 md:px-8">
+                <h2 class="serif-font text-3xl text-center font-bold text-gray-800 mb-12">Save The Date</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Wedding Ceremony -->
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center border border-purple-100">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="bg-purple-100 text-purple-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-church text-2xl"></i>
+                            </div>
+                            <h3 class="serif-font text-xl font-bold text-gray-800">Pemberkatan Nikah</h3>
                         </div>
-                        <div>
-                            <p class="text-lg font-medium">Rabu, 25 Juni 2025</p>
-                            <p class="text-gray-600">10.00 WIB</p>
-                        </div>
+
+                        <p class="text-gray-700 mb-2">
+                            <i class="far fa-calendar-alt text-purple-600 mr-2"></i>
+                            Rabu, 25 Juni 2025
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            <i class="far fa-clock text-purple-600 mr-2"></i>
+                            10.00 WIB
+                        </p>
+                        <p class="text-gray-700">
+                            <i class="fas fa-map-marker-alt text-purple-600 mr-2"></i>
+                            GSJA Kasih Karunia Jepara
+                        </p>
                     </div>
-                    <div class="mt-6">
-                        <p class="text-gray-700"><i class="fas fa-map-marker-alt mr-2 text-purple-700"></i> GSJA Kasih Karunia Jepara</p>
-                        <div class="mt-4">
-                            <a href="#" class="text-purple-700 hover:text-purple-900"><i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta</a>
+
+                    <!-- Reception -->
+                    <div class="bg-white p-8 rounded-lg shadow-md text-center border border-gold-100">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="bg-gold-100 text-gold-800 p-3 rounded-full mr-4">
+                                <i class="fas fa-glass-cheers text-2xl"></i>
+                            </div>
+                            <h3 class="serif-font text-xl font-bold text-gray-800">Resepsi Pernikahan</h3>
                         </div>
+
+                        <p class="text-gray-700 mb-2">
+                            <i class="far fa-calendar-alt text-gold-600 mr-2"></i>
+                            Rabu, 25 Juni 2025
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            <i class="far fa-clock text-gold-600 mr-2"></i>
+                            12.30 WIB
+                        </p>
+                        <p class="text-gray-700">
+                            <i class="fas fa-map-marker-alt text-gold-600 mr-2"></i>
+                            Kaliaman RT 03 RW 06, Kembang, Jepara<br>
+                            (Rumah mempelai wanita)
+                        </p>
                     </div>
                 </div>
-                
-                <!-- Reception -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-yellow-500">
-                    <h3 class="serif text-2xl text-center mb-6 text-purple-900">Resepsi Pernikahan</h3>
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="text-yellow-500 mr-4 text-4xl">
-                            <i class="fas fa-glass-cheers"></i>
-                        </div>
-                        <div>
-                            <p class="text-lg font-medium">Rabu, 25 Juni 2025</p>
-                            <p class="text-gray-600">12.30 WIB</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-gray-700"><i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i> Kaliaman RT 03 RW 06, Kembang, Jepara</p>
-                        <p class="text-gray-500 text-sm">(Rumah mempelai wanita)</p>
-                        <div class="mt-4">
-                            <a href="#" class="text-purple-700 hover:text-purple-900"><i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta</a>
-                        </div>
-                    </div>
+
+                <!-- Map Button (placeholder) -->
+                <div class="text-center mt-8">
+                    <a href="https://maps.app.goo.gl/YqJpWTX9Ja5GdZNN9?g_st=aw" target="_blank"
+                        rel="noopener noreferrer">
+                        <button
+                            class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-full inline-flex items-center transition-all">
+                            <i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta Lokasi
+                        </button>
+                    </a>
+
                 </div>
             </div>
         </section>
-        
+
         <!-- Our Story -->
-        <section class="bg-purple-50 py-16 px-4">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="serif text-3xl text-center mb-16 text-purple-900">Our Love Story</h2>
-                
-                <div class="relative">
-                    <!-- Timeline -->
-                    <div class="border-l-2 border-purple-300 ml-8 pl-8">
-                        <!-- 2018 -->
-                        <div class="relative pb-12">
-                            <div class="bg-white p-6 rounded-lg shadow-sm timeline-item">
-                                <div class="flex items-start">
-                                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-800 mr-6 shrink-0">
-                                        <p class="font-bold text-xl">2018</p>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-semibold text-purple-900 mb-2">Pertemuan Pertama</h4>
-                                        <p class="text-gray-600">Kami bertemu pertama kali di kegiatan Pemuda BAMAG. Saat itu kami sama-sama tidak menyangka bahwa beberapa tahun kemudian kami akan berjalan bersama dalam Tuhan.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 2024 -->
-                        <div class="relative pb-12">
-                            <div class="bg-white p-6 rounded-lg shadow-sm timeline-item">
-                                <div class="flex items-start">
-                                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-800 mr-6 shrink-0">
-                                        <p class="font-bold text-xl">2024</p>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-semibold text-purple-900 mb-2">Tunangan</h4>
-                                        <p class="text-gray-600">Pada tanggal 26 April 2024, kami resmi bertunangan dengan restu dari orang tua dan doa dari keluarga serta teman-teman kami. Momen yang sangat berkesan bagi kami berdua.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 2025 -->
-                        <div class="relative">
-                            <div class="bg-white p-6 rounded-lg shadow-sm timeline-item">
-                                <div class="flex items-start">
-                                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-800 mr-6 shrink-0">
-                                        <p class="font-bold text-xl">2025</p>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-semibold text-purple-900 mb-2">Menikah</h4>
-                                        <p class="text-gray-600">25 Juni 2025 menandai awal yang baru bagi kami sebagai pasangan suami istri. Kami bersyukur bisa memulai perjalanan rumah tangga kami dalam Tuhan.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section class="py-16 px-4 md:px-8 max-w-5xl mx-auto">
+            <h2 class="serif-font text-3xl text-center font-bold text-gray-800 mb-12">Our Story</h2>
+
+            <div class="space-y-12">
+                <!-- 2018 -->
+                <div class="md:flex md:items-center md:space-x-8">
+                    <div class="md:w-1/2">
+                        <img src="assets/img/bertemu.jpg" alt="2018"
+                            class="w-full h-auto object-cover rounded-xl shadow-lg" />
+                    </div>
+                    <div class="md:w-1/2 mt-4 md:mt-0">
+                        <h3 class="serif-font text-xl font-bold text-gray-800 mb-2">2018</h3>
+                        <p class="text-gray-600">Pertemuan pertama di Pemuda BAMAG</p>
+                    </div>
+                </div>
+
+                <!-- 2024 -->
+                <div class="md:flex md:items-center md:space-x-8 md:flex-row-reverse">
+                    <div class="md:w-1/2">
+                        <img src="assets/img/tunangan.jpg" alt="2024"
+                            class="w-full h-auto object-cover rounded-xl shadow-lg" />
+                    </div>
+                    <div class="md:w-1/2 mt-4 md:mt-0">
+                        <h3 class="serif-font text-xl font-bold text-gray-800 mb-2">2024</h3>
+                        <p class="text-gray-600">Tunangan, 26 April</p>
+                    </div>
+                </div>
+
+                <!-- 2025 -->
+                <div class="md:flex md:items-center md:space-x-8">
+                    <div class="md:w-1/2">
+                        <img src="assets/img/nikahan.jpg" alt="2025"
+                            class="w-full h-auto object-cover rounded-xl shadow-lg" />
+                    </div>
+                    <div class="md:w-1/2 mt-4 md:mt-0">
+                        <h3 class="serif-font text-xl font-bold text-gray-800 mb-2">2025</h3>
+                        <p class="text-gray-600">Menikah, 25 Juni</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
+
         <!-- Gallery -->
-        <section class="container mx-auto py-20 px-4">
-            <h2 class="serif text-3xl text-center mb-16 text-purple-900">Galeri Foto</h2>
-            
-            <div class="gallery-container">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="Couple 1" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1588&q=80" alt="Couple 2" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Couple 3" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1498166230970-fc2e27d6e304?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80" alt="Couple 4" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Couple 5" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=Mno9MTY5fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Couple 6" class="w-full h-auto rounded-lg shadow-sm">
-                </div>
-            </div>
-        </section>
-        
-        <!-- Gift -->
-        <section class="bg-purple-100 py-16 px-4">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="serif text-3xl text-center mb-8 text-purple-900">Ucapan & Tanda Kasih</h2>
-                
-                <div class="bg-white p-8 rounded-lg shadow-sm">
-                    <div class="flex flex-col md:flex-row items-center mb-8">
-                        <div class="text-purple-900 text-6xl mb-6 md:mb-0 md:mr-8">
-                            <i class="fas fa-gift"></i>
-                        </div>
-                        <div>
-                            <p class="text-gray-700 mb-4 text-center md:text-left">Doa dan restu Bapak/Ibu/Saudara/i sudah merupakan anugerah terbesar bagi kami. Namun apabila ingin mengirimkan tanda kasih secara digital, berikut kami lampirkan nomor rekening yang bisa digunakan:</p>
-                        </div>
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 md:px-8">
+                <h2 class="serif-font text-3xl text-center font-bold text-gray-800 mb-12">Galeri Kami</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets/img/gallery/gallery (1).jpg" alt="Pre-Wedding 1"
+                            class="w-full h-full object-cover">
                     </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Bank BRI -->
-                        <div class="bg-purple-50 p-6 rounded-lg relative">
-                            <div class="flex items-center mb-4">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bank_BRI_logo.svg/1200px-Bank_BRI_logo.svg.png" alt="BRI" class="h-8 mr-3">
-                                <h3 class="font-semibold">Bank BRI</h3>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-gray-700">1234 56 789012 345</p>
-                                    <p class="text-gray-500 text-sm">a.n. Lucia Christianty</p>
-                                </div>
-                                <button onclick="copyToClipboard('1234 56 789012 345')" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
-                                    <i class="fas fa-copy mr-2"></i> Salin
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Bank BCA -->
-                        <div class="bg-purple-50 p-6 rounded-lg relative">
-                            <div class="flex items-center mb-4">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png" alt="BCA" class="h-8 mr-3">
-                                <h3 class="font-semibold">Bank BCA</h3>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-gray-700">0987 65 432109 876</p>
-                                    <p class="text-gray-500 text-sm">a.n. Yonatan Setyo Abdi</p>
-                                </div>
-                                <button onclick="copyToClipboard('0987 65 432109 876')" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
-                                    <i class="fas fa-copy mr-2"></i> Salin
-                                </button>
-                            </div>
-                        </div>
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets/img/gallery/gallery (2).jpg" alt="Pre-Wedding 2"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets/img/gallery/gallery (3).jpg" alt="Pre-Wedding 3"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets/img/gallery/gallery (4).jpg" alt="Pre-Wedding 4"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets/img/gallery/gallery (5).jpg" alt="Pre-Wedding 5"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                        <img src="assets\img\gallery\gallery (6).jpg" alt="Pre-Wedding 6"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- RSVP -->
-        <section class="container mx-auto max-w-4xl py-16 px-4">
-            <h2 class="serif text-3xl text-center mb-8 text-purple-900">Konfirmasi Kehadiran</h2>
-            
-            <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm">
-                <form id="rsvpForm">
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-gray-700 mb-2">Nomor WhatsApp</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
-                        </div>
+
+        <!-- Wedding Gifts -->
+        <section class="py-16 px-4 md:px-8 max-w-4xl mx-auto">
+            <h2 class="serif-font text-3xl text-center font-bold text-gray-800 mb-8">Ucapan & Tanda Kasih</h2>
+
+            <div class="bg-gold-50 border border-gold-200 rounded-lg p-8 text-center">
+                <div class="mb-6">
+                    <i class="fas fa-gift text-4xl text-gold-600 mb-4"></i>
+                    <p class="text-gray-700 mb-4">
+                        Doa dan restu Bapak/Ibu/Saudara/i sudah merupakan anugerah terbesar bagi kami.
+                    </p>
+                    <p class="text-gray-700">
+                        Namun apabila ingin mengirimkan tanda kasih secara digital, berikut kami lampirkan nomor
+                        rekening yang bisa digunakan:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gold-100">
+                        <h3 class="serif-font font-bold text-gray-800 mb-2">BANK BRI</h3>
+                        <p class="text-gray-700 font-mono text-lg mb-2" id="briAccount">589701035100532</p>
+                        <p class="text-gray-600 text-sm">a.n. Lucia Christianty</p>
+                        <button onclick="copyToClipboard('briAccount')"
+                            class="mt-3 text-gold-600 hover:text-gold-700 text-sm flex items-center justify-center">
+                            <i class="far fa-copy mr-1"></i> Salin Rekening
+                        </button>
                     </div>
-                    
-                    <div class="mb-6">
-                        <label for="attendance" class="block text-gray-700 mb-2">Konfirmasi Kehadiran</label>
-                        <select id="attendance" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
-                            <option value="yes">Hadir ke Pemberkatan & Resepsi</option>
-                            <option value="ceremony">Hadir ke Pemberkatan saja</option>
-                            <option value="reception">Hadir ke Resepsi saja</option>
-                            <option value="no">Tidak bisa hadir</option>
-                        </select>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gold-100">
+                        <h3 class="serif-font font-bold text-gray-800 mb-2">BANK BRI</h3>
+                        <p class="text-gray-700 font-mono text-lg mb-2" id="bcaAccount">589901041098535</p>
+                        <p class="text-gray-600 text-sm">a.n. Yonatan Setyo Abdi</p>
+                        <button onclick="copyToClipboard('bcaAccount')"
+                            class="mt-3 text-gold-600 hover:text-gold-700 text-sm flex items-center justify-center">
+                            <i class="far fa-copy mr-1"></i> Salin Rekening
+                        </button>
                     </div>
-                    
-                    <div class="mb-6">
-                        <label for="message" class="block text-gray-700 mb-2">Ucapan untuk Mempelai</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition flex items-center justify-center">
-                        <i class="fas fa-paper-plane mr-2"></i> Kirim Konfirmasi
-                    </button>
-                </form>
+                </div>
             </div>
         </section>
-        
-        <!-- Footer -->
-        <footer class="bg-purple-900 text-white py-12 px-4 text-center">
-            <h3 class="serif text-2xl mb-6">Lucia & Yonatan</h3>
-            <p class="mb-4">"Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan."</p>
-            <p class="text-sm text-purple-200">Kolose 3:14</p>
-            <div class="flex justify-center gap-4 mt-8 text-2xl">
-                <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </footer>
+
+<!-- Closing Section -->
+<section class="py-16 bg-gray-800 text-white text-center">
+  <div class="max-w-4xl mx-auto px-4 md:px-8">
+    <h2 class="serif-font text-3xl font-bold mb-6">Terima Kasih</h2>
+    <p class="max-w-2xl mx-auto mb-4 italic">
+      Dengan segala kerendahan hati dan penuh sukacita, kami mengundang Anda untuk menjadi bagian dari momen paling berharga dalam hidup kami.
+    </p>
+    <p class="max-w-2xl mx-auto">
+      Doa dan kehadiran Anda akan menjadi anugerah terindah yang melengkapi kebahagiaan kami.
+    </p>
+  </div>
+</section>
+
     </div>
-    
+
     <script>
-        // Simple greeting based on time of day
-        function getGreeting() {
-            const hour = new Date().getHours();
-            if (hour < 12) return "Selamat Pagi";
-            if (hour < 15) return "Selamat Siang";
-            if (hour < 18) return "Selamat Sore";
-            return "Selamat Malam";
-        }
-        
-        // Check URL for guest name
-        function getGuestName() {
+        // Guest name detection
+        document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
-            const name = urlParams.get('nama') || urlParams.get('name') || '';
-            return name.trim() || '[Nama Tamu]';
-        }
-        
-        // Open invitation animation
-        function openInvitation() {
-            document.querySelector('.hero').style.opacity = '0';
-            setTimeout(() => {
-                document.querySelector('.hero').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-                window.scrollTo(0, 0);
-            }, 500);
-            
-            // Add greeting if not already set
-            document.getElementById('guestName').textContent = getGuestName();
-        }
-        
-        // Copy to clipboard function
-        function copyToClipboard(text) {
+            const guestName = urlParams.get('to') || 'Bapak/Ibu/Saudara/i yang terkasih';
+            document.getElementById('guestGreeting').textContent = `Kepada ${guestName}`;
+
+            // Open invitation button
+            document.getElementById('openInvitationBtn').addEventListener('click', function () {
+                document.getElementById('mainContent').classList.remove('hidden');
+                document.querySelector('.hero').style.height = 'auto';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                this.classList.add('hidden');
+            });
+        });
+
+        // Copy bank account function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText.replace(/\s+/g, '');
+
             navigator.clipboard.writeText(text).then(() => {
                 alert('Nomor rekening berhasil disalin!');
-            }, () => {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = text;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                alert('Nomor rekening berhasil disalin!');
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
             });
         }
-        
-        // Set guest name on page load
-        window.onload = function() {
-            document.getElementById('guestName').textContent = getGuestName();
-            
-            // RSVP form submission
-            document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Terima kasih atas konfirmasi kehadiran Anda!');
-                this.reset();
-            });
-        };
     </script>
 </body>
+
 </html>
