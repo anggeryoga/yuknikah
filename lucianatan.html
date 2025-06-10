@@ -542,27 +542,38 @@
 
     </script>
     <script>
-        const btn = document.getElementById("openInvitationBtn");
-        const music = document.getElementById("backgroundMusic");
+        const music = document.getElementById('backgroundMusic');
+        const bukaBtn = document.getElementById('openInvitationBtn');
 
-        btn.addEventListener("click", () => {
-            music.play()
-                .then(() => {
-                    console.log("Musik diputar 🎶");
-
-                    // Optional: Sembunyikan tombol setelah diklik
-                    btn.style.display = "none";
-
-                    // Optional: Munculkan undangan isi (kalau ada)
-                    // document.getElementById("mainInvitation").classList.remove("hidden");
-
-                })
-                .catch((error) => {
-                    console.error("Gagal memutar musik:", error);
-                    alert("Klik sekali lagi kalau musik belum nyala yaa 😅");
+        // Fungsi play musik
+        const playMusic = () => {
+            if (music.paused) {
+                music.play().catch(() => {
+                    console.log("Autoplay gagal, coba klik lagi ya.");
                 });
+            }
+        };
+
+        // Jalankan hanya saat tombol diklik
+        bukaBtn.addEventListener('click', () => {
+            playMusic();
+
+            // Optional: efek visual atau sembunyikan tombol
+            bukaBtn.style.display = 'none'; // misalnya tombol disembunyikan
+            // document.getElementById('mainInvitation').classList.remove('hidden');
+        });
+    </script>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
         });
 
+        document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     </script>
 </body>
 
